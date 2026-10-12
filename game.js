@@ -169,7 +169,8 @@ function drawBlock(context, x, y, colorIndex, size, alpha) {
 }
 
 function drawGrid() {
-  ctx.strokeStyle = '#22222e';
+  ctx.strokeStyle = getComputedStyle(document.documentElement)
+    .getPropertyValue('--grid').trim();
   ctx.lineWidth = 0.5;
   for (let c = 1; c < COLS; c++) {
     ctx.beginPath();
@@ -301,4 +302,22 @@ document.addEventListener('keydown', e => {
 
 restartBtn.addEventListener('click', init);
 
+const themeBtn = document.getElementById('theme-toggle');
+
+function applyTheme(theme) {
+  document.documentElement.dataset.theme = theme;
+  themeBtn.textContent = theme === 'dark' ? '☀ Modo claro' : '🌙 Modo oscuro';
+  // en pausa/game over el loop no corre, así que redibujamos a mano
+  draw();
+  drawNext();
+}
+
+themeBtn.addEventListener('click', () => {
+  const theme = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+  localStorage.setItem('theme', theme);
+  applyTheme(theme);
+  themeBtn.blur(); // evita que Space active el botón
+});
+
 init();
+applyTheme(localStorage.getItem('theme') === 'light' ? 'light' : 'dark');
