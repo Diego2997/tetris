@@ -9,11 +9,29 @@ body {
   color: #e0e0e0;
   font-family: system-ui, -apple-system, sans-serif;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 16px;
   min-height: 100vh;
   user-select: none;
 }
+
+/* ---- Título ---- */
+.title {
+  font-size: 32px;
+  font-weight: 800;
+  letter-spacing: 8px;
+  padding-left: 8px; /* compensa el letter-spacing final para centrar */
+  line-height: 1;
+}
+
+.title span:nth-child(1) { color: #e57373; }
+.title span:nth-child(2) { color: #ffb86c; }
+.title span:nth-child(3) { color: #f1fa8c; }
+.title span:nth-child(4) { color: #50fa7b; }
+.title span:nth-child(5) { color: #7aa2f7; }
+.title span:nth-child(6) { color: #bb9af7; }
 
 .wrapper {
   position: relative;
