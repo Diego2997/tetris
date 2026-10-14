@@ -11,6 +11,7 @@ Vanilla JS Tetris: `index.html` + `style.css` + `game.js`. No build, no package.
 All logic lives in `game.js` as top-level functions sharing module-level mutable state (`board`, `current`, `next`, `score`, `lines`, `level`, `paused`, `gameOver`, `dropInterval`, `animId`, ...). `init()` resets all of it, and is also the restart handler.
 
 - Board is a `ROWS x COLS` matrix of `0` or a piece-type index 1-7. The same index selects `COLORS[i]` and `PIECES[i]` (index 0 is `null` in both).
+- Skins: `SKINS = {retro, neon, pastel, pixel}`, each with `colors[]` (index 1-7) and `draw(ctx, px, py, size, color)`. `drawBlock()` delegates to `SKINS[currentSkin]`; `COLORS` is the retro palette. Preference in `localStorage("skin")`, `data-skin` on `<html>`.
 - Piece shape is a square matrix filled with its own type index (not 1), so `shape[r][c]` doubles as the color index when drawing.
 - Piece flow: `lockPiece()` = `merge()` -> `clearLines()` -> `spawn()`. `spawn()` calls `endGame()` when the new piece collides immediately.
 - Gravity runs in `loop()` (rAF, accumulates `dropAccum` against `dropInterval`). Player-input drops go through `softDrop()`/`hardDrop()`, which also award score.
