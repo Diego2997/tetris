@@ -14,7 +14,7 @@ All logic lives in `game.js` as top-level functions sharing module-level mutable
 - Piece shape is a square matrix filled with its own type index (not 1), so `shape[r][c]` doubles as the color index when drawing.
 - Piece flow: `lockPiece()` = `merge()` -> `clearLines()` -> `spawn()`. `spawn()` calls `endGame()` when the new piece collides immediately.
 - Gravity runs in `loop()` (rAF, accumulates `dropAccum` against `dropInterval`). Player-input drops go through `softDrop()`/`hardDrop()`, which also award score.
-- `clearLines()` owns level and speed recalculation: `level = floor(lines/10)+1`, `dropInterval = max(100, 1000 - (level-1)*90)`.
+- `clearLines()` owns level and speed recalculation: `level = max(startLevel, floor(lines/10)+1)` (`startLevel` 1-10 comes from the pause menu, saved in localStorage), `dropInterval = max(100, 1000 - (level-1)*90)`.
 - Rotation is `rotateCW()` plus horizontal kicks `[0,-1,1,-2,2]` in `tryRotate()`. No vertical kicks.
 - Pause/game over share one `#overlay` element; `endGame()`/`togglePause()` set its title text and unhide it.
 
