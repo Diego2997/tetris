@@ -84,7 +84,7 @@ Después abre `http://localhost:8000` en el navegador.
 | `↑` o `X` | Rotar la pieza en sentido horario |
 | `↓`       | Soft drop (bajar más rápido)      |
 | `Espacio` | Hard drop (caída instantánea)     |
-| `P`       | Pausar / reanudar                 |
+| `P` o `Esc` | Pausar / reanudar (menú: Reanudar, Reiniciar, controles, nivel inicial) |
 
 El botón de la esquina superior derecha alterna entre modo oscuro (por defecto) y modo claro. La preferencia se guarda en `localStorage`.
 
