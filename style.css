@@ -75,6 +75,27 @@ body {
   border-color: var(--accent);
 }
 
+/* ---- Selector de skin ---- */
+.skin-select {
+  position: fixed;
+  top: 16px;
+  right: 160px;
+  background: var(--board-bg);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 6px 8px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* Neon fuerza fondo negro en tablero y preview */
+[data-skin="neon"] #board,
+[data-skin="neon"] #next-canvas {
+  background: #000;
+}
+
 /* ---- Título ---- */
 .title {
   font-size: 32px;
